@@ -1,16 +1,24 @@
 import './App.css'
-// import LoginPage from "./components/LoginPage.jsx"
-import PatientFormPage from "./components/PatientFormPage.jsx"
+import {
+  LoginPage,
+  PatientFormPage,
+  AppointmentFormPage
+} from './components/index'
+import {
+  BrowserRouter as Router,
+  Routes,Route
+} from 'react-router-dom';
 function App() {
 
   return (
-    <>
-      <div>
-        <PatientFormPage/>
-        {/* <LoginPage/> */}
-      </div>
-    </>
-  )
+  <Router>
+      <Routes>
+        <Route path='/' element={<LoginPage />}/>
+        <Route path='/patient-from-page' element={<PatientFormPage />}/>
+        <Route path='/appointment-form-page' element={<AppointmentFormPage />}/>
+      </Routes>
+    </Router>
+      )
 }
 
 export default App
