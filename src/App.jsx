@@ -2,12 +2,14 @@ import './App.css'
 import {
   LoginPage,
   PatientFormPage,
-  AppointmentFormPage
+  AppointmentFormPage,
+  Dashboard
 } from './components/index'
 import {
   BrowserRouter as Router,
   Routes,Route
 } from 'react-router-dom';
+
 function App() {
 
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<LoginPage />}/>
         <Route path='/patient-from-page' element={<PatientFormPage />}/>
         <Route path='/appointment-form-page' element={<AppointmentFormPage />}/>
+        <Route path='/Dashboard' element={<Dashboard />}/>
+
       </Routes>
     </Router>
       )

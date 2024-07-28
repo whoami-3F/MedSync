@@ -3,10 +3,10 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { FaHandPaper } from "react-icons/fa";
 import {useState} from 'react';
-import chopper from '../assets/chopper.jpg' 
-import franken from '../assets/franken.jpg'
-import shou from '../assets/shou.jpeg'
-import tsunade from '../assets/tsunade.jpg'
+import chopper from '../../assets/chopper.jpg' 
+import franken from '../../assets/franken.jpg'
+import shou from '../../assets/shou.jpeg'
+import tsunade from '../../assets/tsunade.jpg'
 import {useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form'
 
@@ -46,16 +46,19 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
         <div className="flex justify-center">
           <form onSubmit={handleSubmit(onSubmit)}
             className="w-full max-w-7xl">
+
         {/* Personal Information section */}
         <div>
-          <h1>Personal Information</h1>
+          <p className="text-xl font-bold mb-3">Personal Information</p>
 
           {/* first line */}
         <label className="block mb-2 ">Full name</label>
-       <div className="relative">
+       <div className={`relative ${errors.name ? 'mb-7': '' }`}>
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <CiUser className="text-gray-400"/>
               </span>
+                <div className="absolute">
+              </div>
               <input
                 type="text"
                 placeholder="ex: Ram Kumar"
@@ -64,11 +67,12 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
                 })}
                 className="outline-none w-full rounded p-2 pl-8 bg-gray-800"
               />
-              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+                <p className="absolute text-red-500 -bottom-6 left-0">{errors.name && errors.name.message}</p>
             </div>
+              
           {/* Second line */}
         <div className="grid grid-cols-2 mt-3 gap-x-5">
-          <div>
+          <div className={`relative ${errors.email ? 'mb-6':''}`}>
                   <label className="block mb-2">Email address</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 flex items-center pl-2">
@@ -84,10 +88,11 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
                 }
                       })}
                     />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+                    <p className="absolute text-red-500 -bottim-6 left-0">{errors.email && errors.email.message}</p>
           </div>
           </div>
 
+                {/* phone number section  */}
           <div>
             <label className="block mb-2">Phone number</label>
               <div className="relative">
@@ -183,7 +188,8 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
         {/* Medical Information Section */}
         <div className="mt-14">
           {/* First line */}
-            <h1>Medical Infomration</h1>
+             <p className="text-xl font-bold mb-2">Medical Infomration</p>
+              <label className="block">Physician</label>
         <div className="mt-3 relative w-full">
         <select
         name="physician"
@@ -199,8 +205,10 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
         ))}
       </select>
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 ">
-    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-  </div>
+    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+    </svg>
+                  </div>
        <div className="absolute inset-y-0 left-0 flex items-center px-1 
                   pointer-events-none">
         <img
@@ -273,8 +281,8 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
           {/* Identification and Verfication */}
           <div className="mt-10">
             {/* first line */}
-              <h1>Identification and Verfication</h1>
-            <div className="mt-3">
+              <p className="text-xl font-bold mb-2">Identification and Verfication</p>
+            <div className="mt-3 relative">
               <label className="block">Identification type</label>
               <select name="identification" id="identificationId"
                        className="outline-none w-full bg-gray-800 rounded p-2 appearance-none" >
@@ -282,10 +290,13 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
                 <option value="Citizenship">Citizenship</option>
                 <option value="password">Password</option>
               </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                   </div>
-            </div>
+                  <div className="pointer-events-none absolute inset-y-9 right-0 flex px-2">
+                     <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+
+                </div>
           </div>
 
           {/* second line */}
@@ -304,7 +315,7 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
 
         {/* Consent and Privacy  */}
         <div className="mt-14" >
-            <h1 className="mb-5">Consent and Privacy</h1>
+            <p className="text-xl font-bold mb-5">Consent and Privacy</p>
           <div>
             <input type="checkbox" className="cursor-pointer"/>
             <label className="mx-2">I consent to receive tretment for my health condition.</label>
