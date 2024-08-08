@@ -62,7 +62,7 @@ const [selectedOption,setSelectedOption] = useState('FrankenStein');
               <input
                 type="text"
                 placeholder="ex: Ram Kumar"
-                {...register('name', {
+                {...('name', {
                   required: "Full name is required",
                 })}
                 className="outline-none w-full rounded p-2 pl-8 bg-gray-800"

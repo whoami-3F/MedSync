@@ -28,7 +28,7 @@ function AppointmentFormPage () {
     navigate('/');
   }
   return ( 
-  <div className="bg-gray-900 min-h-screen text-white flex items-center justify-center px-10 pb-10">
+<div className="bg-gray-900 min-h-screen text-white flex items-center justify-center px-10 pb-10">
   <div>
         <div className="pb-10 pt-10 flex flex-col items-center text-2xl">
           <div className="flex items-center">
